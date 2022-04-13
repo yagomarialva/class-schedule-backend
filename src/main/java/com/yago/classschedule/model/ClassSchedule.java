@@ -1,5 +1,6 @@
 package com.yago.classschedule.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -15,14 +16,14 @@ public class ClassSchedule {
 	private Long id;
 	private String student;
 	private String teacher;
-	private LocalDate doc;
+	private String doc;
 	
 	public ClassSchedule() {
 		super();
 	}
 	
 	
-	public ClassSchedule(Long id, String student, String teacher, LocalDate doc) {
+	public ClassSchedule(Long id, String student, String teacher, String doc) {
 		super();
 		this.id = id;
 		this.student = student;
@@ -61,12 +62,12 @@ public class ClassSchedule {
 	}
 
 
-	public LocalDate getDoc() {
+	public String getDoc() {
 		return doc;
 	}
 
 
-	public void setDoc(LocalDate doc) {
+	public void setDoc(String doc) {
 		this.doc = doc;
 	}
 
