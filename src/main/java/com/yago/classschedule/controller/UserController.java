@@ -1,5 +1,4 @@
 package com.yago.classschedule.controller;
-import com.yago.classschedule.model.ClassSchedule;
 
 import java.util.List;
 
@@ -13,31 +12,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yago.classschedule.repository.ClassScheduleRepository;
+import com.yago.classschedule.model.User;
+import com.yago.classschedule.repository.UserRepository;
 
 @RestController
-@RequestMapping("/api/v1/classschedule")
-public class ClassScheduleController {
-	
+@RequestMapping("/api/v1/admin")
+public class UserController {
 	@Autowired
-	private ClassScheduleRepository classScheduleRepository;
+	private UserRepository userRepository;
 
-	public ClassScheduleController(ClassScheduleRepository classScheduleRepository) {
-		super();
-		this.classScheduleRepository = classScheduleRepository;
-	}
+
 	
+	public UserController(UserRepository userRepository) {
+		super();
+		this.userRepository = userRepository;
+	}
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping
-	public List<ClassSchedule> getClassSchedule(){
-		return classScheduleRepository.findAll();
+	public List<User> getClassSchedule(){
+		return userRepository.findAll();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	@CrossOrigin(origins = "http://localhost:4200")
-	public ClassSchedule setClassSchedule(@RequestBody ClassSchedule classSchedule) {
-		return classScheduleRepository.save(classSchedule);
+	public User setUser(@RequestBody User user) {
+		return userRepository.save(user);
 	}
-
 }
